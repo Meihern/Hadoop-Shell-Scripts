@@ -12,8 +12,7 @@ declare -A file_names_array;
 for i in "${files_array[@]}";                                                                                         
 do                                                                                                                    
 file_base_name="$i".json.gz;                                                                                          
-file_name=$RES_DIR/"$i".json;                                                                                         
-echo $file_name;                                                                                                      
+file_name=$RES_DIR/"$i".json;                                                                                                                                                                                              
 wget -O $TEMP_DIR/$file_base_name "${FILE_URL}${file_base_name}";                                                     
 gunzip $TEMP_DIR/$file_base_name;                                                                                     
 hdfs dfs -D dfs.blockSize=$BLOCK_SIZE_VALUE -put $TEMP_DIR/"$i".json $file_name;                                      
